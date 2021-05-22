@@ -1,0 +1,7 @@
+Testcase: edu.umb.cs680.hw15.ApfsLinkTest
+Test: verifyLinksInDirectory() took 1 milli sec(s)
+Test: verifyLink() took 0 milli sec(s)
+Test: verifySize() took 0 milli sec(s)
+Test: verifyEqualityOfLinkX() took 0 milli sec(s)
+Test: verifyEqualityOfLinkY() took 0 milli sec(s)
+Tests run: 5, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 5 milli sec(s)
