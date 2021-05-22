@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="hw11" basedir="." default="build">
+
+	<property name="output.dir" value="bin" />
+	<property name="test.output.dir" value="test/bin" />
+	<property name="src.dir" value="src" />
+	<property name="test.src.dir" value="test/src" />
+	<property environment="env" />
+	<property name="junit.output.dir" value="junit" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.8" />
+	<property name="source" value="1.8" />
+	<path id="classpath">
+		<pathelement location="bin" />
+		<pathelement location="test/bin" />
+		<fileset dir="${env.JUNIT}" includes="*.jar" excludes="org.junit.vintage.*.jar" />
+	</path>
+
+	<target name="clean">
+		<delete dir="${output.dir}" />
+		<delete dir="${test.output.dir}" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${output.dir}" />
+		<mkdir dir="${test.output.dir}" />
+	</target>
+
+	<target depends="clean" name="cleanall" />
+	<target depends="clean, build-project, CarTest, Car" name="build" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${output.dir}" includeantruntime="false" source="${source}" target="${target}">
+			<src path="${src.dir}" />
+			<classpath refid="classpath" />
+		</javac>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="test/bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="${test.src.dir}" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="Car">
+		<java classname="edu.umb.cs680.hw11.Car" classpath="bin" failonerror="true" fork="yes" />
+	</target>
+
+	<target name="CarTest">
+		<junitlauncher printSummary="yes">
+			<classpath refid="classpath" />
+
+			<testclasses outputdir="test">
+				<fileset dir="${test.output.dir}">
+					<include name="edu/umb/cs680/hw11/*Test.class" />
+				</fileset>
+				<listener type="legacy-plain" sendSysOut="true" />
+			</testclasses>
+		</junitlauncher>
+	</target>
+</project>

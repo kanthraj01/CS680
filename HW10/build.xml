@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  To run this build script, type: 
+  ant -f build.xml
+  on a shell. 
+-->
+<project name="hw10" basedir="." default="clean">
+	<property environment="env" />
+	<echo message="JUNIT: ${env.JUNIT}" />
+	<echo message="ANT_HOME: ${env.ANT_HOME}" />
+	<property name="src" location="src" />
+	<property name="bin" location="bin" />
+	<property name="test.src" location="test/src" />
+	<property name="test.bin" location="test/bin" />
+	<property name="test.reports" location="test/reports" />
+	<path id="classpath">
+		<pathelement location="bin" />
+		<pathelement location="test/bin" />
+		<fileset dir="${env.JUNIT}" includes="*.jar" excludes="org.junit.vintage.*.jar" />
+		<fileset dir="${env.JUNIT}" includes="org.opentest4j*.jar" />
+		<fileset dir="${env.JUNIT}" includes="org.apiguardian*.jar" />
+	</path>
+
+	<target name="init">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${test.bin}" />
+		<mkdir dir="${test.reports}" />
+	</target>
+	<target name="compile-test" depends="init">
+		<javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
+			<classpath refid="classpath" />
+		</javac>
+		<javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	<target name="test" depends="compile-test">
+		<junitlauncher printSummary="true">
+			<classpath refid="classpath" />
+			<testclasses outputdir="${test.reports}">
+				<fileset dir="${test.bin}">
+					<include name="edu/umb/cs680/hw10/*Test.class" />
+				</fileset>
+				<listener type="legacy-plain" sendSysOut="true" />
+			</testclasses>
+		</junitlauncher>
+	</target>
+	<target name="clean" depends="test">
+		<delete includeemptydirs="true">
+			<fileset dir="${bin}/edu/umb/cs680/hw10" includes="**/*" />
+			<fileset dir="${test.bin}/edu/umb/cs680/hw10" includes="**/*" />
+		</delete>
+	</target>
+</project>

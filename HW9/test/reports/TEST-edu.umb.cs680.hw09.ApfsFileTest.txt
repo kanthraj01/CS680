@@ -1,0 +1,11 @@
+Testcase: edu.umb.cs680.hw09.ApfsFileTest
+Test: verifyFiles() took 0 milli sec(s)
+Test: verifyDirectory() took 1 milli sec(s)
+Test: verifyA() took 1 milli sec(s)
+Test: verifyB() took 0 milli sec(s)
+Test: verifyC() took 0 milli sec(s)
+Test: verifyD() took 0 milli sec(s)
+Test: verifyE() took 1 milli sec(s)
+Test: verifyF() took 1 milli sec(s)
+Test: verifyFilesByDirectory() took 1 milli sec(s)
+Tests run: 9, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 11 milli sec(s)

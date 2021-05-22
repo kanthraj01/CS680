@@ -1,0 +1,4 @@
+Testcase: edu.umb.cs680.hw08.LinkTest
+Test: verifyTargetEqualityE() took 0 milli sec(s)
+Test: verifyTargetEqualityHome() took 2 milli sec(s)
+Tests run: 2, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 5 milli sec(s)

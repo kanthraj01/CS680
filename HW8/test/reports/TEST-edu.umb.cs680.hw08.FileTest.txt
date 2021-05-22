@@ -1,0 +1,7 @@
+Testcase: edu.umb.cs680.hw08.FileTest
+Test: TestforDirectory() took 0 milli sec(s)
+Test: verifyA() took 3 milli sec(s)
+Test: verifyB() took 1 milli sec(s)
+Test: verifyC() took 2 milli sec(s)
+Test: verifyF() took 1 milli sec(s)
+Tests run: 5, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 19 milli sec(s)
